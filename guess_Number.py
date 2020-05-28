@@ -14,7 +14,7 @@ def getRandomNumber(max_count:int):
         if (out_val.find(number_i)==-1):
             out_val += number_i
     print('Загадываем число ...')
-    time.sleep(2)
+    time.sleep(1)
     print('Число загадано...4-х значное')
     #Запись загаданного значения в файл
     now = datetime.datetime.now()
@@ -57,7 +57,7 @@ def checkCount(x1:int, user_data_in:int):
 
     for c in check_list:
         if c==1: correct_number_count+=1
-    print('Количество полноых совпадений (на своих местах) : ', correct_number_count)
+    print('Количество полных совпадений (на своих местах) : ', correct_number_count)
     if (user_list == out_list): print('Ура! Вы угадали!!! \nКоличество попыток:', atempt_number)
     
     #Создание нового листа без дубликатов в вводе
@@ -68,7 +68,7 @@ def checkCount(x1:int, user_data_in:int):
     #Вхождение цифр в загаданное число
     for fig in list_in_without_repeated_element:
         if fig in out_list: count_repeated_element+=1
-    print(f'Количество, совпадающих элементов: {count_repeated_element}')
+    print(f'Общее количество, совпадающих элементов: {count_repeated_element}')
     
     
     return (user_list == out_list)
@@ -86,12 +86,12 @@ while (stop_game):
     check_res_bool = checkCount(x_number,in_data)
     if not atempt_number < number_of_attemps:
         
-        print('Число не угадано! Загаданное число было: ',x_number)
-        break
+        print('Число не угадано за указанное количество попыток! \nЗагаданное число было: ',x_number)
+        #break
 
     atempt_number += 1
     if check_res_bool or atempt_number>number_of_attemps:
-        stop_game = input('Хотите повторить игру? (1-да, 0-нет)')
+        stop_game = input('Хотите повторить игру? (1-да, 0-нет) : ')
         if int(stop_game)==1:
             x_number = getRandomNumber(4)
             check_res_bool = 0
